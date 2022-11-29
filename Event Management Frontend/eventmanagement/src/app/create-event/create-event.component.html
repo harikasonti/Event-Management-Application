@@ -1,0 +1,57 @@
+<nav >
+    <ul >
+          <button class="nav-item" [routerLink]="['/events']" class = "btn btn-outline-success"> Event List</button>&nbsp;
+          <button class="nav-item" [routerLink]="['/create-event']"class = "btn btn-outline-success"> Add Event </button>&nbsp;   
+          <button class="nav-item" [routerLink]="['/customers']"class = "btn btn-outline-success"> Customers List </button> &nbsp; 
+          <button class="nav-item" [routerLink]="['/onlypayment']"class = "btn btn-outline-success"> Payment List </button> &nbsp;  
+          <button class="nav-item" [routerLink]="['/onlybooking']"class = "btn btn-outline-success"> Booking List </button> &nbsp;  
+    </ul>
+</nav>
+<br>
+<div class="col-md-6 offset-md-3">
+    <h3> Add Event</h3>
+    <br>
+    <form #e="ngForm" (ngSubmit) = "onSubmit()">
+
+        
+
+        <div class="form-group">
+            <label>  Event Name</label>
+            <input type="text" class ="form-control" id = "name" name = "name"  
+            [(ngModel)] = 'event.eventName' required  #eventName="ngModel" [class.is-invalid]="eventName.invalid && eventName.touched"/>
+                        
+            <small class="text-danger"  [class.d-none]="eventName.valid || eventName.untouched">Event Name is required field</small> 
+        </div>
+        <br>
+    
+        <div class="form-group">
+            <label>Event Cost</label>
+            <input type="number" class ="form-control" id = "cost"
+                [(ngModel)] = "event.eventCost" name = "cost" required  #cost="ngModel" [class.is-invalid]="cost.invalid && cost.touched"/>
+                        
+                <small class="text-danger"  [class.d-none]="cost.valid || cost.untouched">Cost is required field</small> 
+        </div>
+        <br>
+    
+        <div class="form-group">
+            <label>Capacity</label>
+            <input type="number" class ="form-control" id = "capacity"
+                [(ngModel)] = "event.capacity" name ="capacity" required  #capacity="ngModel" [class.is-invalid]="capacity.invalid && capacity.touched"/>
+                        
+                <small class="text-danger"  [class.d-none]="capacity.valid || capacity.untouched">Capacity is required field</small>
+        </div>
+        <br>
+        <div class="form-group">
+
+            <label>Food</label> &nbsp;
+            
+            <input type="radio" id="True" name="fav_language" value="True" [(ngModel)] = "event.food" >
+            <label for="True">Yes</label>&nbsp;
+            <input type="radio" id="False" name="fav_language" value="False" [(ngModel)] = "event.food">
+            <label for="False">No</label><br>
+
+        </div>
+    <br>
+        <button class = "btn btn-success" type ="submit">Add Event</button>
+</form>
+</div> 

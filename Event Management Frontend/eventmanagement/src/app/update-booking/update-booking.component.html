@@ -1,0 +1,66 @@
+
+<div class="col-md-6 offset-md-3">
+
+    <h3> Update Booking</h3>
+
+    <br>
+
+    <form #e="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label> Booking Id</label>
+            <input type="text" class="form-control" id="bookingId" name="bookingId" [(ngModel)]='booking.bookingId'
+                required #bookingId="ngModel" [class.is-invalid]="bookingId.invalid && bookingId.touched">
+            <small class="text-danger" [class.d-none]="bookingId.valid || bookingId.untouched">BookingId is required
+                field</small>
+        </div>
+        <br>
+
+        <div class="form-group">
+
+            <label>Date:</label>
+
+            <input type="date" id="date" name="date" class="form-control" [(ngModel)]='booking.date' value="2022-11-22"
+                min="2022-01-01" max="2022-12-31" required #date="ngModel"
+                [class.is-invalid]="date.invalid && date.touched">
+               <!--<input type="text" class="form-control" id="date" [(ngModel)]="booking.date" name="date" required
+                #date="ngModel" [class.is-invalid]="date.invalid && date.touched">-->
+            <small class="text-danger" [class.d-none]="date.valid || date.untouched">Date is required
+                field</small>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label>Status</label>
+            <input type="text" class="form-control" id="status" [(ngModel)]="booking.status" name="status" required
+                #status="ngModel" [class.is-invalid]="status.invalid && status.touched">
+            <small class="text-danger" [class.d-none]="status.valid || status.untouched">Status is required
+                field</small>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label>Bill</label>
+            <input type="number" class="form-control" id="bill" [(ngModel)]="booking.bill" name="bill" required
+                #bill="ngModel" [class.is-invalid]="bill.invalid && bill.touched">
+            <small class="text-danger" [class.d-none]="bill.valid || bill.untouched">Bill is required
+                field</small>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label>No.Of Attendies</label><br>
+            <input type="number" class="form-control" id="noOfAttendies" name="noOfAttendies"
+                [(ngModel)]="booking.noOfAttendies" required #noOfAttendies="ngModel"
+                [class.is-invalid]="noOfAttendies.invalid && noOfAttendies.touched">
+            <small class="text-danger" [class.d-none]="noOfAttendies.valid || noOfAttendies.untouched">Number of
+                Attendies is required
+                field</small>
+        </div>
+        <br>
+
+        <button class="btn btn-success" type="submit">Update Booking</button>
+
+    </form>
+
+</div>

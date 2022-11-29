@@ -1,0 +1,84 @@
+<ul>
+
+    <button class="nav-item" [routerLink]="['/payment']" class="btn btn-outline-success"> payment list </button>&nbsp;
+
+    <button class="nav-item" [routerLink]="['/create-payment']" class="btn btn-outline-success"> Add payment
+    </button>&nbsp;
+    <button class="nav-item" [routerLink]="['/create-booking']" class="btn btn-outline-success"> Add booking
+    </button>&nbsp;
+    <button class="nav-item" [routerLink]="['/booking']" class="btn btn-outline-success">Booking List
+    </button>&nbsp;
+
+
+</ul>
+<div class="col-md-6 offset-md-3">
+
+    <h3>  Add payment </h3>
+
+    <br>
+
+    <form #e="ngForm" (ngSubmit) = "onSubmit()">
+
+
+
+       <!-- <div class="form-group">
+
+            <label>  payment Id</label>
+
+            <input type="text" class ="form-control" id = "id" name = "id"  
+
+            [(ngModel)] = 'payment.transactionId' >
+
+        </div>
+-->
+        <br>
+
+
+
+        <div class="form-group">
+
+            <label>  Payment Date</label>
+        
+            <!--<input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>-->
+          <input type="date" class ="form-control" id = "name" name = "name"  
+
+            [(ngModel)] = "payment.transactionDate" 
+            required #transactionDate="ngModel" [class.is-invalid]="transactionDate.invalid && transactionDate.touched"/>
+                        
+                       
+                        <small class="text-danger"  [class.d-none]="transactionDate.valid || transactionDate.untouched"> please select the date </small>
+
+        </div>
+
+        <br>
+
+   
+
+        <div class="form-group">
+
+            <label>Amount to paid</label>
+
+            <input type="number" class ="form-control" id = "cost"
+
+                [(ngModel)] = "payment.amountPaid" name = "cost"
+                
+                required #amountPaid="ngModel" [class.is-invalid]="amountPaid.invalid && amountPaid.touched"/>
+
+                       
+
+                       
+
+                <small class="text-danger"  [class.d-none]="amountPaid.valid || amountPaid.untouched">plase enter the amount</small>
+        </div>
+
+        <br>
+
+        <button class = "btn btn-success" type ="submit">pay</button>
+
+</form>
+
+</div>
+

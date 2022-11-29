@@ -1,0 +1,60 @@
+<nav >
+    <ul >
+          <button class="nav-item" [routerLink]="['/events']" class = "btn btn-outline-success"> Event List</button>&nbsp;
+          <button class="nav-item" [routerLink]="['/create-event']"class = "btn btn-outline-success"> Add Event </button>&nbsp;   
+          <button class="nav-item" [routerLink]="['/customers']"class = "btn btn-outline-success"> Customers List </button> &nbsp; 
+          <button class="nav-item" [routerLink]="['/onlypayment']"class = "btn btn-outline-success"> Payment List </button> &nbsp;  
+          <button class="nav-item" [routerLink]="['/onlybooking']"class = "btn btn-outline-success"> Booking List </button> &nbsp;  
+    </ul>
+</nav>
+<h2>Booking List</h2>
+
+<div class="search-hero">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+        placeholder="  Start searching by bookingId,date,status,bill or noOfAttendies">
+</div>
+
+<table class="table table-striped">
+
+    <thead>
+
+        <tr>
+
+            <th (click)="sortbookingId() ">Booking ID</th>
+
+            <th (click)="sortdate()"> Booking Date</th>
+
+            <th (click)="sortstatus()"> Booking Status</th>
+
+            <th (click)="sortbill()"> Booking Bill</th>
+
+            <th (click)="sortnoOfAttendies()"> Booking No.Of Attendies </th>
+
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        <tr *ngFor="let b of booking | filter:searchText
+         | paginate:{itemsPerPage:5,currentPage:p};">
+
+            <td> {{b.bookingId }} </td>
+
+            <td> {{b.date }} </td>
+
+            <td> {{b.status }} </td>
+
+            <td> {{b.bill}} </td>
+
+            <td> {{b.noOfAttendies}} </td>
+
+            
+
+        </tr>
+
+    </tbody>
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+
+</table>

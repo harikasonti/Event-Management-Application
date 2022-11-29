@@ -1,0 +1,46 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Modify Event</h3>
+    <br>
+    <form #e="ngForm" (ngSubmit) = "onSubmit()">
+
+        <div class="form-group">
+            <label>  Event Id</label>
+            <input type="text" class ="form-control" id = "id" name = "id"  
+            [(ngModel)] = 'event.eventId' >
+        </div>
+        <br> 
+
+        <div class="form-group">
+            <label>  Event Name</label>
+            <input type="text" class ="form-control" id = "name" name = "name"  
+            [(ngModel)] = 'event.eventName' >
+        </div>
+        <br>
+    
+        <div class="form-group">
+            <label>Event Cost</label>
+            <input type="number" class ="form-control" id = "cost"
+                [(ngModel)] = "event.eventCost" name = "cost">
+        </div>
+        <br>
+    
+        <div class="form-group">
+            <label>Capacity</label>
+            <input type="number" class ="form-control" id = "capacity"
+                [(ngModel)] = "event.capacity" name ="capacity">
+        </div>
+        <br>
+        <div class="form-group">
+
+            <label>Food</label> &nbsp;
+            
+            <input type="radio" id="True" name="fav_language" value="True" [(ngModel)] = "event.food">
+            <label for="True">Yes</label>&nbsp;
+            <input type="radio" id="False" name="fav_language" value="False" [(ngModel)] = "event.food">
+            <label for="False">No</label><br>
+
+        </div>
+    <br>
+        <button class = "btn btn-success" type ="submit">Modify Event</button>
+</form>
+</div> 

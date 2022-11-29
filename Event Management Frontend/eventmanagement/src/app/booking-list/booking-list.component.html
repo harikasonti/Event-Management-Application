@@ -1,0 +1,74 @@
+
+<ul>
+
+    <button class="nav-item" [routerLink]="['/payment']" class="btn btn-outline-success"> payment list </button>&nbsp;
+
+    <button class="nav-item" [routerLink]="['/create-payment']" class="btn btn-outline-success"> Add payment
+    </button>&nbsp;
+    <button class="nav-item" [routerLink]="['/create-booking']" class="btn btn-outline-success"> Add booking
+    </button>&nbsp;
+    <button class="nav-item" [routerLink]="['/booking']" class="btn btn-outline-success">Booking List
+    </button>&nbsp;
+
+
+</ul>
+<h2>Booking List</h2>
+
+<div class="search-hero">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+        placeholder="  Start searching by bookingId,date,status,bill or noOfAttendies">
+</div>
+
+<table class="table table-striped">
+
+    <thead>
+
+        <tr>
+
+            <th (click)="sortbookingId() ">Booking ID</th>
+
+            <th (click)="sortdate()"> Booking Date</th>
+
+            <th (click)="sortstatus()"> Booking Status</th>
+
+            <th (click)="sortbill()"> Booking Bill</th>
+
+            <th (click)="sortnoOfAttendies()"> Booking No.Of Attendies </th>
+
+            <th> Actions </th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        <tr *ngFor="let b of booking | filter:searchText
+         | paginate:{itemsPerPage:5,currentPage:p};">
+
+            <td> {{b.bookingId }} </td>
+
+            <td> {{b.date }} </td>
+
+            <td> {{b.status }} </td>
+
+            <td> {{b.bill}} </td>
+
+            <td> {{b.noOfAttendies}} </td>
+
+            <td>
+
+                <button (click)="updateBooking(b.bookingId)" class="btn btn-outline-success"> Update</button>&nbsp;
+
+                <button (click)="deleteBooking(b.bookingId)" class="btn btn-outline-danger"> Delete</button>
+
+
+
+            </td>
+
+        </tr>
+
+    </tbody>
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+
+</table>
